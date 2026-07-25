@@ -24,8 +24,21 @@ export default function Home() {
         </p>
       </Link>
 
+      <Link
+        href="/price/"
+        style={{ display: "block", border: "1px solid #d9e6dd", background: "#f2f9f5", borderRadius: 14, padding: "1.3rem 1.5rem", textDecoration: "none", marginTop: 14 }}
+      >
+        <span style={{ fontSize: 12, fontWeight: 700, color: "#0a7d3c", letterSpacing: 1 }}>公開中</span>
+        <p style={{ margin: "6px 0 4px", fontSize: "1.15rem", fontWeight: 700, color: "#12263a" }}>
+          太陽光・蓄電池の費用相場2026｜kW・容量別の目安 →
+        </p>
+        <p style={{ margin: 0, fontSize: 14, color: "#44586b", lineHeight: 1.7 }}>
+          経産省・SIIの公的データで、太陽光（新築28.9万円/kW 等）・蓄電池（SII目標12.5万円/kWh）の出力別・容量別の総額目安を出典つきで。卒FIT後の売電と自家消費の考え方も。
+        </p>
+      </Link>
+
       <p style={{ color: "#8a99a8", lineHeight: 1.8, marginTop: 20, fontSize: 14 }}>
-        （準備中：メーカー別・容量別の実勢相場インデックス／投資回収シミュレーター／メーカー比較を順次公開します。）
+        （準備中：投資回収シミュレーター／メーカー比較を順次公開します。）
       </p>
 
       <footer style={{ marginTop: 48, borderTop: "1px solid #e3e9ee", paddingTop: 20, color: "#8a99a8", fontSize: 12.5, lineHeight: 1.8 }}>

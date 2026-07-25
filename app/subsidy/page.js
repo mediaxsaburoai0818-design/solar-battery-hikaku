@@ -56,8 +56,9 @@ export default function SubsidyPage() {
           <li>受付状況（受付中／終了／要確認）は確認日時点のものです。補助金は流動的なため、定期的に再確認して更新します。</li>
           <li>本サイトは太陽光・蓄電池の見積もり比較を行う<strong>編集部</strong>が運営し、事実ベース・出典明記を方針としています。特定の効果や「必ず得をする」といった保証はしません。</li>
         </ul>
-        <p style={{ marginTop: 18 }}>
-          <Link href="/" style={{ color: "#0a7d3c", fontWeight: 700 }}>← トップ（太陽光・蓄電池 見積もり比較）へ戻る</Link>
+        <p style={{ marginTop: 18, display: "flex", gap: 18, flexWrap: "wrap" }}>
+          <Link href="/price/" style={{ color: "#0a7d3c", fontWeight: 700 }}>→ 費用相場（kW・容量別の目安）</Link>
+          <Link href="/" style={{ color: "#0a7d3c", fontWeight: 700 }}>← トップへ戻る</Link>
         </p>
       </section>
     </main>
