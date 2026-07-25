@@ -22,6 +22,11 @@ function Card({ s }) {
       <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 8 }}>
         <Badge status={s.status} />
         <span style={{ fontSize: 12, color: "#66788a", fontWeight: 700 }}>{s.level}・{s.region}</span>
+        {s.type === "共同購入" ? (
+          <span style={{ background: "#eef2fb", color: "#3b5bb5", fontSize: 11, fontWeight: 700, padding: "3px 9px", borderRadius: 999 }}>
+            共同購入（値引き・給付ではない）
+          </span>
+        ) : null}
       </div>
       <h3 style={{ margin: "0 0 10px", fontSize: "1.05rem", lineHeight: 1.4, color: "#1a2b3c" }}>{s.name}</h3>
       <dl style={{ margin: 0, fontSize: 14, color: "#37485a", lineHeight: 1.7 }}>
