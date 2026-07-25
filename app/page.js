@@ -37,8 +37,21 @@ export default function Home() {
         </p>
       </Link>
 
+      <Link
+        href="/simulator/"
+        style={{ display: "block", border: "1px solid #d9e6dd", background: "#f2f9f5", borderRadius: 14, padding: "1.3rem 1.5rem", textDecoration: "none", marginTop: 14 }}
+      >
+        <span style={{ fontSize: 12, fontWeight: 700, color: "#0a7d3c", letterSpacing: 1 }}>公開中</span>
+        <p style={{ margin: "6px 0 4px", fontSize: "1.15rem", fontWeight: 700, color: "#12263a" }}>
+          投資回収シミュレーター｜元が取れる？を試算 →
+        </p>
+        <p style={{ margin: 0, fontSize: 14, color: "#44586b", lineHeight: 1.7 }}>
+          出力・容量・地域の補助金・自家消費率を入れると、実質初期費用と単純回収年数を公的データの目安で計算。前提と出典を明記。
+        </p>
+      </Link>
+
       <p style={{ color: "#8a99a8", lineHeight: 1.8, marginTop: 20, fontSize: 14 }}>
-        （準備中：投資回収シミュレーター／メーカー比較を順次公開します。）
+        （準備中：メーカー別・容量別の比較を順次公開します。）
       </p>
 
       <footer style={{ marginTop: 48, borderTop: "1px solid #e3e9ee", paddingTop: 20, color: "#8a99a8", fontSize: 12.5, lineHeight: 1.8 }}>
