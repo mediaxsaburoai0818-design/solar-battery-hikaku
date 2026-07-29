@@ -50,7 +50,7 @@ export default function SubsidyPage() {
       {/* 県別単独ページ(勝ち筋④) */}
       <section style={{ marginTop: 34 }}>
         <h2 className="sb-h2" style={{ fontSize: "1.2rem" }}>都道府県別の補助金ページ</h2>
-        <p style={{ fontSize: 14 }}>収録済みの7都府県は、金額・受付状況・モデルケース試算つきの単独ページがあります(順次拡充)。</p>
+        <p style={{ fontSize: 14 }}>収録済みの15都道府県は、金額・受付状況・モデルケース試算つきの単独ページがあります(順次拡充)。</p>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <Link href="/subsidy/tokyo/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>東京都</Link>
           <Link href="/subsidy/kanagawa/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>神奈川県</Link>
@@ -59,6 +59,14 @@ export default function SubsidyPage() {
           <Link href="/subsidy/aichi/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>愛知県</Link>
           <Link href="/subsidy/osaka/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>大阪府</Link>
           <Link href="/subsidy/fukuoka/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>福岡県</Link>
+          <Link href="/subsidy/hokkaido/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>北海道</Link>
+          <Link href="/subsidy/miyagi/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>宮城県</Link>
+          <Link href="/subsidy/ibaraki/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>茨城県</Link>
+          <Link href="/subsidy/gunma/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>群馬県</Link>
+          <Link href="/subsidy/shizuoka/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>静岡県</Link>
+          <Link href="/subsidy/kyoto/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>京都府</Link>
+          <Link href="/subsidy/hyogo/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>兵庫県</Link>
+          <Link href="/subsidy/hiroshima/" className="sb-btn sb-btn-green" style={{ padding: "8px 16px", fontSize: 13.5 }}>広島県</Link>
         </div>
       </section>
 

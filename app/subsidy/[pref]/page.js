@@ -47,6 +47,41 @@ const PREFS = {
     },
   },
   aichi: { name: "愛知県", model: null },
+  hokkaido: { name: "北海道", model: null },
+  miyagi: {
+    name: "宮城県",
+    model: {
+      assumption: "太陽光(蓄エネ併設)+蓄電池を導入する場合(定額制)",
+      lines: ["太陽光: 3万円/件(定額)", "蓄電池: 4万円/件(定額)"],
+      total: "合計の目安: 7万円(募集期制のため申請時期に注意。要件は公式で要確認)",
+    },
+  },
+  ibaraki: { name: "茨城県", model: null },
+  gunma: { name: "群馬県", model: null },
+  shizuoka: { name: "静岡県", model: null },
+  kyoto: {
+    name: "京都府",
+    model: {
+      assumption: "FIT売電をしない自家消費型で太陽光4kW+蓄電池6kWhを導入する場合(実施市町村の場合)",
+      lines: [
+        "太陽光: 4万円/kW × 4kW = 16万円(上限16万円に到達)",
+        "蓄電池: 4万円/kWh × 6kWh = 24万円(上限24万円に到達)",
+      ],
+      total: "合計の目安: 40万円(FIT売電可の区分は単価が1万円/kW・kWhに下がる。申請窓口は市町村・実施有無の確認必須)",
+    },
+  },
+  hyogo: {
+    name: "兵庫県",
+    model: {
+      assumption: "実施市町で太陽光5kW+蓄電池を同時導入する場合(セット導入が条件)",
+      lines: [
+        "太陽光: 7万円/kW × 5kW = 35万円(上限5kW)",
+        "蓄電池: 工事費込(税抜)の1/3(単価上限14.1万円/kWhの1/3・5kWhまで)",
+      ],
+      total: "太陽光分の目安35万円+蓄電池は費用の1/3(額は見積により変動)。実施市町(29市町)か要確認",
+    },
+  },
+  hiroshima: { name: "広島県", model: null },
   osaka: { name: "大阪府", model: null },
   fukuoka: { name: "福岡県", model: null },
 };
@@ -127,7 +162,7 @@ export default function PrefSubsidyPage({ params }) {
       <h1>{p.name}の太陽光・蓄電池 補助金【2026年・令和8年度】</h1>
       <p>
         {p.name}の太陽光発電・家庭用蓄電池に関する補助制度を、<strong>公式の一次情報で確認できた範囲のみ</strong>、
-        補助単価・上限・期間・<strong>受付状況</strong>つきで掲載します（確認日: {CONFIRMED_AT}）。
+        補助単価・上限・期間・<strong>受付状況</strong>つきで掲載します（確認日は各制度カードに明記）。
       </p>
       <div className="sb-note">
         ⚠️ 補助金は年度・予算で変動し、<strong>予算満了で早期終了</strong>することがあります。申請前に必ず各制度の出典リンク（公式）で最新状況をご確認ください。
