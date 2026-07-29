@@ -53,6 +53,7 @@ export default function RootLayout({ children }) {
               <Link href="/price/">費用相場</Link>
               <Link href="/simulator/">回収シミュレーター</Link>
               <Link href="/guide/">損得ガイド</Link>
+              <Link href="/makers/">メーカー比較</Link>
             </nav>
           </div>
         </header>
@@ -64,6 +65,7 @@ export default function RootLayout({ children }) {
               <Link href="/price/">費用相場</Link>
               <Link href="/simulator/">投資回収シミュレーター</Link>
               <Link href="/guide/">損得ガイド</Link>
+              <Link href="/makers/">蓄電池メーカー比較</Link>
             </div>
             <p style={{ margin: 0 }}>
               運営：太陽光・蓄電池比較 編集部｜方針：事実ベース・公式の一次情報のみ・出典と確認日を明記。

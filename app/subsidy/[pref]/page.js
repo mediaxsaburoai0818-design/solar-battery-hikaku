@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SUBSIDIES } from "../../data/subsidies";
+import { TOKYO_WARDS, WARDS_CONFIRMED_AT } from "../../data/tokyo-wards";
 
 // 県別補助金ページ(勝ち筋④)。データは app/data/subsidies.js の公式一次確認値のみを描画する。
 // モデルケースはDB収録の単価×仮定条件の機械的計算(仮定は本文に明記)。市区町村は未収録＝正直表示。
@@ -86,10 +87,15 @@ export default function PrefSubsidyPage({ params }) {
       q: `国の補助金と${p.name}の補助金は併用できますか？`,
       a: `制度ごとに要件・併用ルールが異なるため、一律には言えません。国のDR補助金（蓄電池）は2026年5月29日に予算到達で終了しています。併用可否は各制度の公式窓口での確認が必要です（当サイトは確認できた事実のみ掲載し、推測は書きません）。`,
     },
-    {
-      q: `市区町村の補助金は載っていますか？`,
-      a: `本ページは${p.name}（都道府県レベル）と国の制度を収録しています。市区町村の補助金は現在未収録のため、お住まいの市区町村の公式サイト・窓口でご確認ください（順次拡充予定です）。`,
-    },
+    params.pref === "tokyo"
+      ? {
+          q: `東京23区の補助金も載っていますか？`,
+          a: `はい。23区すべての公式サイトを確認し、区ごとの補助単価・上限・受付状況を本ページの一覧表に収録しています（確認日${WARDS_CONFIRMED_AT}）。制度が無い区(世田谷区・渋谷区・板橋区・江戸川区※単独補助)も正直に記載しています。都の制度と併用できる場合がありますが、要件は各区の出典リンク先でご確認ください。`,
+        }
+      : {
+          q: `市区町村の補助金は載っていますか？`,
+          a: `本ページは${p.name}（都道府県レベル）と国の制度を収録しています。市区町村の補助金は現在未収録のため、お住まいの市区町村の公式サイト・窓口でご確認ください（順次拡充予定です）。`,
+        },
   ];
 
   const jsonLd = {
@@ -185,11 +191,53 @@ export default function PrefSubsidyPage({ params }) {
         併用可否は制度ごとに要件が異なります。当サイトは確認できた事実のみを掲載し、未確認の断定はしません。
       </p>
 
-      <h2 className="sb-h2">市区町村の補助金について（正直な現状）</h2>
-      <p>
-        本ページは<strong>{p.name}（都道府県）と国の制度</strong>を収録しています。市区町村レベルの補助金は現在未収録です（順次拡充予定）。
-        お住まいの市区町村の公式サイト・環境/エネルギー担当窓口でご確認ください。
-      </p>
+      {params.pref === "tokyo" ? (
+        <>
+          <h2 className="sb-h2">東京23区の補助金 全区一覧（区公式を全数確認・{WARDS_CONFIRMED_AT}）</h2>
+          <p style={{ fontSize: 14 }}>
+            23区すべての公式サイトを確認しました。<strong>都の補助金と併用できる場合があります</strong>（併用要件は各区・各制度で異なるため出典リンク先でご確認ください）。
+            制度が無い区・終了した区も、そのまま正直に記載しています。
+          </p>
+          <div className="sb-table-wrap">
+            <table className="sb-table">
+              <thead>
+                <tr>
+                  <th>区</th>
+                  <th>状況</th>
+                  <th>太陽光</th>
+                  <th>蓄電池</th>
+                  <th>メモ</th>
+                  <th>出典</th>
+                </tr>
+              </thead>
+              <tbody>
+                {TOKYO_WARDS.map((w) => (
+                  <tr key={w.ward}>
+                    <th className="whitespace-nowrap">{w.ward}</th>
+                    <td><span className={w.status === "受付中" ? "sb-badge sb-badge-open" : w.status === "終了" || w.status === "制度なし" ? "sb-badge sb-badge-closed" : "sb-badge sb-badge-check"}>{w.status}</span></td>
+                    <td>{w.solar}</td>
+                    <td>{w.battery}</td>
+                    <td style={{ fontSize: 12.5 }}>{w.note}</td>
+                    <td><a href={w.source} target="_blank" rel="noopener noreferrer">区公式</a></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="sb-source">
+            出典: 各区公式サイト・公式パンフレットPDF（確認日 {WARDS_CONFIRMED_AT}）。受付状況・予算残は日々変動するため、申請前に必ず区公式でご確認ください。
+            単価・上限の詳細条件（区内業者優遇・同時導入増額・抽選方式等）はメモ欄と出典をご覧ください。
+          </p>
+        </>
+      ) : (
+        <>
+          <h2 className="sb-h2">市区町村の補助金について（正直な現状）</h2>
+          <p>
+            本ページは<strong>{p.name}（都道府県）と国の制度</strong>を収録しています。市区町村レベルの補助金は現在未収録です（順次拡充予定）。
+            お住まいの市区町村の公式サイト・環境/エネルギー担当窓口でご確認ください。
+          </p>
+        </>
+      )}
 
       <h2 className="sb-h2">よくある質問</h2>
       {faqs.map((f) => (

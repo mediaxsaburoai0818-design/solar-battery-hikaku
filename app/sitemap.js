@@ -16,6 +16,7 @@ export default function sitemap() {
     "/subsidy/fukuoka",
     "/price",
     "/simulator",
+    "/makers",
     "/guide",
     "/guide/solar-quit",
     "/guide/battery-worth",

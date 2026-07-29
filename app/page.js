@@ -62,9 +62,13 @@ export default function Home() {
         </Link>
       </div>
 
-      <p style={{ color: "var(--ink-faint)", marginTop: 22, fontSize: 14 }}>
-        （準備中：メーカー別・容量別の比較を順次公開します。）
-      </p>
+      <Link href="/makers/" className="sb-card sb-rise sb-rise-4" style={{ marginTop: 14 }}>
+        <span className="sb-tag">公開中</span>
+        <p className="sb-card-title">蓄電池メーカー比較DB｜容量・保証・全負荷対応で横断 →</p>
+        <p className="sb-card-desc">
+          主要8メーカー(ニチコン・オムロン・シャープ・パナソニック・京セラ・長州産業・ダイヤゼブラ・テスラ)の代表機種を公式一次情報のみで比較。容量保証の条件(50/60/70%)の違いまで。
+        </p>
+      </Link>
     </main>
   );
 }
