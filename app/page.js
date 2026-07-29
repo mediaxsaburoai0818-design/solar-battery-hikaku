@@ -2,63 +2,69 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main style={{ maxWidth: 780, margin: "0 auto", padding: "3rem 1.5rem 4rem" }}>
-      <p style={{ letterSpacing: 2, fontSize: 12, color: "#0a7d3c", fontWeight: 700 }}>SOLAR &amp; BATTERY</p>
-      <h1 style={{ fontSize: "2rem", lineHeight: 1.3, color: "#12263a" }}>太陽光・蓄電池 見積もり比較</h1>
-      <p style={{ color: "#44586b", lineHeight: 1.8 }}>
-        太陽光発電・家庭用蓄電池の費用・補助金・メーカーを、事実ベースの一次データで比較するサイトです。
-        価格の相場、国・自治体の補助金、投資回収の考え方を、出典・確認日つきで整理します。
-      </p>
+    <main className="sb-main sb-main-wide">
+      {/* ヒーロー */}
+      <section className="sb-hero sb-rise">
+        <p className="sb-eyebrow">SOLAR &amp; BATTERY — DATA FIRST</p>
+        <h1>
+          太陽光・蓄電池の「実際いくら？」を
+          <br />
+          公的データと出典つきで比較する
+        </h1>
+        <p>
+          費用相場・国と自治体の補助金・投資回収を、経産省・SII・自治体公式の一次情報だけで整理。
+          全ての数値に出典と確認日を明記し、確認できないものは「要確認」と正直に表示します。
+        </p>
+        <div className="sb-hero-chips">
+          <span className="sb-chip">太陽光 新築 <b>28.9万円/kW</b>（経産省2025）</span>
+          <span className="sb-chip">蓄電池 目標 <b>12.5万円/kWh</b>（SII 2025年度）</span>
+          <span className="sb-chip">補助金DB <b>国＋7都府県</b> 収録</span>
+        </div>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <Link href="/simulator/" className="sb-btn sb-btn-sun">
+            回収年数を試算する →
+          </Link>
+          <Link href="/subsidy/" className="sb-btn sb-btn-ghost">
+            補助金を調べる
+          </Link>
+        </div>
+      </section>
 
-      {/* 補助金DBへの導線（第1弾公開） */}
-      <Link
-        href="/subsidy/"
-        style={{ display: "block", border: "1px solid #d9e6dd", background: "#f2f9f5", borderRadius: 14, padding: "1.3rem 1.5rem", textDecoration: "none", marginTop: 24 }}
-      >
-        <span style={{ fontSize: 12, fontWeight: 700, color: "#0a7d3c", letterSpacing: 1 }}>公開中</span>
-        <p style={{ margin: "6px 0 4px", fontSize: "1.15rem", fontWeight: 700, color: "#12263a" }}>
-          太陽光・蓄電池の補助金2026｜国＋自治体データベース →
-        </p>
-        <p style={{ margin: 0, fontSize: 14, color: "#44586b", lineHeight: 1.7 }}>
-          国（SIIのDR補助金・みらいエコ住宅2026）＋自治体7都府県（東京・神奈川・埼玉・千葉・愛知・大阪・福岡）を、対象・単価・上限・期間・受付状況で。全て公式の出典URL・確認日つき。
-        </p>
-      </Link>
+      {/* コンテンツカード */}
+      <div className="sb-grid2">
+        <Link href="/subsidy/" className="sb-card sb-rise sb-rise-2">
+          <span className="sb-tag">公開中</span>
+          <p className="sb-card-title">補助金2026｜国＋自治体データベース →</p>
+          <p className="sb-card-desc">
+            国（SIIのDR補助金・みらいエコ住宅2026）＋7都府県（東京・神奈川・埼玉・千葉・愛知・大阪・福岡）を、対象・単価・上限・期間・受付状況で。全て公式の出典URL・確認日つき。
+          </p>
+        </Link>
+        <Link href="/price/" className="sb-card sb-rise sb-rise-2">
+          <span className="sb-tag">公開中</span>
+          <p className="sb-card-title">費用相場2026｜kW・容量別の目安 →</p>
+          <p className="sb-card-desc">
+            経産省・SIIの公的データで、太陽光（新築28.9万円/kW 等）・蓄電池（SII目標12.5万円/kWh）の出力別・容量別の総額目安を出典つきで。卒FIT後の売電と自家消費の考え方も。
+          </p>
+        </Link>
+        <Link href="/simulator/" className="sb-card sb-rise sb-rise-3">
+          <span className="sb-tag">公開中</span>
+          <p className="sb-card-title">投資回収シミュレーター｜元が取れる？を試算 →</p>
+          <p className="sb-card-desc">
+            出力・容量・地域の補助金・自家消費率を入れると、実質初期費用と単純回収年数を公的データの目安で計算。前提と出典を明記。
+          </p>
+        </Link>
+        <Link href="/guide/" className="sb-card sb-rise sb-rise-3">
+          <span className="sb-tag sb-tag-sun">損得ガイド</span>
+          <p className="sb-card-title">「やめたほうがいい？」「元が取れない？」に数値で答える →</p>
+          <p className="sb-card-desc">
+            太陽光は後悔する？蓄電池は損？——よくある不安を、公的相場と回収シミュレーターの実数で検証。向く家・向かない家の条件まで正直に整理します。
+          </p>
+        </Link>
+      </div>
 
-      <Link
-        href="/price/"
-        style={{ display: "block", border: "1px solid #d9e6dd", background: "#f2f9f5", borderRadius: 14, padding: "1.3rem 1.5rem", textDecoration: "none", marginTop: 14 }}
-      >
-        <span style={{ fontSize: 12, fontWeight: 700, color: "#0a7d3c", letterSpacing: 1 }}>公開中</span>
-        <p style={{ margin: "6px 0 4px", fontSize: "1.15rem", fontWeight: 700, color: "#12263a" }}>
-          太陽光・蓄電池の費用相場2026｜kW・容量別の目安 →
-        </p>
-        <p style={{ margin: 0, fontSize: 14, color: "#44586b", lineHeight: 1.7 }}>
-          経産省・SIIの公的データで、太陽光（新築28.9万円/kW 等）・蓄電池（SII目標12.5万円/kWh）の出力別・容量別の総額目安を出典つきで。卒FIT後の売電と自家消費の考え方も。
-        </p>
-      </Link>
-
-      <Link
-        href="/simulator/"
-        style={{ display: "block", border: "1px solid #d9e6dd", background: "#f2f9f5", borderRadius: 14, padding: "1.3rem 1.5rem", textDecoration: "none", marginTop: 14 }}
-      >
-        <span style={{ fontSize: 12, fontWeight: 700, color: "#0a7d3c", letterSpacing: 1 }}>公開中</span>
-        <p style={{ margin: "6px 0 4px", fontSize: "1.15rem", fontWeight: 700, color: "#12263a" }}>
-          投資回収シミュレーター｜元が取れる？を試算 →
-        </p>
-        <p style={{ margin: 0, fontSize: 14, color: "#44586b", lineHeight: 1.7 }}>
-          出力・容量・地域の補助金・自家消費率を入れると、実質初期費用と単純回収年数を公的データの目安で計算。前提と出典を明記。
-        </p>
-      </Link>
-
-      <p style={{ color: "#8a99a8", lineHeight: 1.8, marginTop: 20, fontSize: 14 }}>
+      <p style={{ color: "var(--ink-faint)", marginTop: 22, fontSize: 14 }}>
         （準備中：メーカー別・容量別の比較を順次公開します。）
       </p>
-
-      <footer style={{ marginTop: 48, borderTop: "1px solid #e3e9ee", paddingTop: 20, color: "#8a99a8", fontSize: 12.5, lineHeight: 1.8 }}>
-        <p style={{ margin: 0 }}>
-          運営：太陽光・蓄電池比較 編集部｜方針：事実ベース・公式の一次情報のみ・出典と確認日を明記。特定の効果や「必ず得をする」といった保証はしません。
-        </p>
-      </footer>
     </main>
   );
 }

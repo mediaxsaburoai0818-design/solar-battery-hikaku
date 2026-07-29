@@ -1,0 +1,288 @@
+/* ============================================================
+   Solar Battery Hikaku — Clean Energy Design System
+   コンセプト: 「晴れた日の発電所」— 深い常緑×澄んだ空×太陽アンバー。
+   データサイトとしての信頼感(白ベース・整った表)に、
+   クリーンエナジーの気配(緑のグラデ・太陽の光暈・パネル紋様)を重ねる。
+   ============================================================ */
+
+:root {
+  --ink: #0f2a1e;
+  --ink-soft: #3d5548;
+  --ink-faint: #6e8478;
+  --pine: #0c4b32;
+  --brand: #14894f;
+  --leaf: #3ec278;
+  --teal: #0d7f7a;
+  --sky: #eaf6f0;
+  --sun: #f5b120;
+  --sun-deep: #d99303;
+  --bg: #f5faf6;
+  --card: #ffffff;
+  --line: #d9e9de;
+  --line-strong: #b9d6c3;
+  --ok-bg: #e2f6e9;
+  --ok-fg: #0c6b3a;
+  --end-bg: #eef1ef;
+  --end-fg: #5c6b62;
+  --warn-bg: #fdf3dc;
+  --warn-fg: #8a6410;
+  --radius: 16px;
+  --shadow: 0 2px 10px rgba(12, 75, 50, 0.06);
+  --shadow-lift: 0 10px 28px rgba(12, 75, 50, 0.14);
+  --font-jp: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-num: "Bricolage Grotesque", "Zen Kaku Gothic New", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-jp);
+  color: var(--ink);
+  background:
+    radial-gradient(900px 420px at 88% -80px, rgba(245, 177, 32, 0.10), transparent 60%),
+    radial-gradient(700px 500px at -120px 30%, rgba(20, 137, 79, 0.07), transparent 55%),
+    var(--bg);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--brand); }
+
+/* ---------- ヘッダー ---------- */
+.sb-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.sb-header-in {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.sb-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 15.5px;
+  letter-spacing: 0.02em;
+}
+.sb-logo svg { display: block; }
+.sb-logo small {
+  display: block;
+  font-family: var(--font-num);
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  color: var(--brand);
+  text-transform: uppercase;
+}
+.sb-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.sb-nav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 7px 11px;
+  border-radius: 999px;
+  transition: background 0.18s, color 0.18s;
+}
+.sb-nav a:hover { background: var(--sky); color: var(--pine); }
+
+/* ---------- レイアウト ---------- */
+.sb-main { max-width: 840px; margin: 0 auto; padding: 2.6rem 1.4rem 4rem; }
+.sb-main-wide { max-width: 1040px; }
+
+.sb-eyebrow {
+  font-family: var(--font-num);
+  letter-spacing: 0.24em;
+  font-size: 11.5px;
+  color: var(--brand);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+h1 { font-size: 1.95rem; line-height: 1.35; margin: 4px 0 14px; font-weight: 900; letter-spacing: 0.01em; }
+h2 { font-size: 1.32rem; line-height: 1.45; margin: 2.4em 0 0.6em; font-weight: 800; }
+h2.sb-h2 {
+  padding-left: 12px;
+  border-left: 5px solid var(--sun);
+  border-image: linear-gradient(180deg, var(--sun), var(--leaf)) 1;
+}
+h3 { font-size: 1.06rem; margin: 1.6em 0 0.5em; font-weight: 800; color: var(--pine); }
+p { color: var(--ink-soft); }
+strong { color: var(--ink); }
+
+/* ---------- ヒーロー(トップ) ---------- */
+.sb-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    radial-gradient(480px 260px at 85% 0%, rgba(245, 177, 32, 0.35), transparent 62%),
+    linear-gradient(128deg, #0c4b32 0%, #0f6b45 46%, #0d7f7a 100%);
+  color: #fff;
+  padding: 2.6rem 2rem 2.4rem;
+  margin: 0.4rem 0 2rem;
+}
+.sb-hero::after {
+  /* ソーラーパネルの目地パターン */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 56px);
+  pointer-events: none;
+}
+.sb-hero > * { position: relative; z-index: 1; }
+.sb-hero .sb-eyebrow { color: #ffd977; }
+.sb-hero h1 { color: #fff; font-size: 2.05rem; margin: 2px 0 10px; }
+.sb-hero p { color: #d9efe4; margin: 0 0 18px; font-size: 15px; max-width: 40em; }
+.sb-hero-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.sb-chip {
+  font-family: var(--font-num);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #eafff3;
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.sb-chip b { color: #ffd977; font-weight: 800; }
+
+/* 読み込み時のステージング */
+.sb-rise { animation: sbRise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.sb-rise-2 { animation-delay: 0.08s; }
+.sb-rise-3 { animation-delay: 0.16s; }
+.sb-rise-4 { animation-delay: 0.24s; }
+@keyframes sbRise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sb-rise, .sb-rise-2, .sb-rise-3, .sb-rise-4 { animation: none; }
+}
+
+/* ---------- ボタン ---------- */
+.sb-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-size: 14.5px;
+  transition: transform 0.16s, box-shadow 0.16s, background 0.16s;
+}
+.sb-btn-sun {
+  background: linear-gradient(180deg, #ffc63d, var(--sun));
+  color: #3d2c00;
+  box-shadow: 0 4px 14px rgba(245, 177, 32, 0.35);
+}
+.sb-btn-sun:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(245, 177, 32, 0.45); }
+.sb-btn-ghost {
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+.sb-btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+.sb-btn-green { background: var(--brand); color: #fff; }
+.sb-btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(20, 137, 79, 0.35); }
+
+/* ---------- カード ---------- */
+.sb-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.5rem;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  margin-top: 14px;
+}
+.sb-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); border-color: var(--line-strong); }
+.sb-card .sb-card-title { margin: 6px 0 4px; font-size: 1.13rem; font-weight: 800; color: var(--ink); }
+.sb-card .sb-card-desc { margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.75; }
+.sb-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--ok-fg);
+  background: var(--ok-bg);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.sb-tag-sun { color: var(--sun-deep); background: #fff3d6; }
+
+.sb-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 680px) { .sb-grid2 { grid-template-columns: 1fr; } }
+
+/* ---------- ステータスバッジ(補助金) ---------- */
+.sb-badge { display: inline-block; font-size: 11.5px; font-weight: 800; border-radius: 999px; padding: 2px 10px; }
+.sb-badge-open { background: var(--ok-bg); color: var(--ok-fg); }
+.sb-badge-closed { background: var(--end-bg); color: var(--end-fg); }
+.sb-badge-check { background: var(--warn-bg); color: var(--warn-fg); }
+
+/* ---------- 注意ボックス・直答ボックス ---------- */
+.sb-note {
+  background: var(--warn-bg);
+  border: 1px solid #f0e0b8;
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  color: var(--warn-fg);
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin: 0 0 26px;
+}
+.sb-answer {
+  background: linear-gradient(180deg, #f0faf4, #e8f6ee);
+  border: 1px solid var(--line-strong);
+  border-left: 6px solid var(--brand);
+  border-radius: 14px;
+  padding: 1.1rem 1.3rem;
+  margin: 18px 0 26px;
+}
+.sb-answer p { margin: 0.3em 0; }
+
+/* ---------- テーブル ---------- */
+.sb-table-wrap { overflow-x: auto; margin: 14px 0; }
+.sb-table { border-collapse: collapse; width: 100%; font-size: 13.8px; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+.sb-table th { background: var(--pine); color: #eafff3; font-weight: 700; text-align: left; padding: 9px 12px; font-size: 12.8px; letter-spacing: 0.03em; white-space: nowrap; }
+.sb-table td { border-top: 1px solid var(--line); padding: 9px 12px; color: var(--ink-soft); vertical-align: top; }
+.sb-table tr:nth-child(even) td { background: #f7fbf8; }
+.sb-table td b, .sb-table td strong { color: var(--ink); }
+
+/* ---------- FAQ ---------- */
+.sb-faq { border: 1px solid var(--line); border-radius: 12px; background: var(--card); margin-top: 10px; box-shadow: var(--shadow); }
+.sb-faq summary { cursor: pointer; font-weight: 800; padding: 13px 16px; color: var(--ink); list-style: none; position: relative; padding-right: 40px; }
+.sb-faq summary::after { content: "+"; position: absolute; right: 16px; top: 10px; font-family: var(--font-num); font-size: 19px; color: var(--brand); transition: transform 0.2s; }
+.sb-faq[open] summary::after { transform: rotate(45deg); }
+.sb-faq div { padding: 0 16px 14px; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+
+/* ---------- 出典 ---------- */
+.sb-source { font-size: 12.5px; color: var(--ink-faint); line-height: 1.7; }
+
+/* ---------- フッター ---------- */
+.sb-footer { border-top: 1px solid var(--line); background: #fff; margin-top: 3rem; }
+.sb-footer-in { max-width: 1040px; margin: 0 auto; padding: 26px 20px 34px; font-size: 12.5px; color: var(--ink-faint); line-height: 1.9; }
+.sb-footer-in a { color: var(--brand); text-decoration: none; font-weight: 700; }
+.sb-footer-nav { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }

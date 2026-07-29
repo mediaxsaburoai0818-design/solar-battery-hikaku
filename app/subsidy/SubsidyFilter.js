@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 const STATUS_STYLE = {
-  "受付中": { bg: "#e6f6ec", fg: "#0a7d3c", label: "受付中" },
+  "受付中": { bg: "#e6f6ec", fg: "var(--brand)", label: "受付中" },
   "終了": { bg: "#eceff2", fg: "#66788a", label: "終了" },
   "要確認": { bg: "#fdf3e0", fg: "#b7791f", label: "要確認" },
 };
@@ -18,7 +18,7 @@ function Badge({ status }) {
 
 function Card({ s }) {
   return (
-    <div style={{ border: "1px solid #e3e9ee", borderRadius: 14, padding: "1.25rem 1.4rem", marginBottom: 14, background: "#fff" }}>
+    <div style={{ border: "1px solid var(--line)", borderRadius: 14, padding: "1.25rem 1.4rem", marginBottom: 14, background: "#fff" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 8 }}>
         <Badge status={s.status} />
         <span style={{ fontSize: 12, color: "#66788a", fontWeight: 700 }}>{s.level}・{s.region}</span>
@@ -28,7 +28,7 @@ function Card({ s }) {
           </span>
         ) : null}
       </div>
-      <h3 style={{ margin: "0 0 10px", fontSize: "1.05rem", lineHeight: 1.4, color: "#1a2b3c" }}>{s.name}</h3>
+      <h3 style={{ margin: "0 0 10px", fontSize: "1.05rem", lineHeight: 1.4, color: "var(--ink)" }}>{s.name}</h3>
       <dl style={{ margin: 0, fontSize: 14, color: "#37485a", lineHeight: 1.7 }}>
         <Row k="対象" v={s.target} />
         <Row k="補助単価" v={s.unit} />
@@ -37,8 +37,8 @@ function Card({ s }) {
         {s.statusNote ? <Row k="状況・注記" v={s.statusNote} /> : null}
         <Row k="運営" v={s.operator} />
       </dl>
-      <p style={{ margin: "10px 0 0", fontSize: 12, color: "#8a99a8" }}>
-        出典：<a href={s.source} target="_blank" rel="nofollow noopener noreferrer" style={{ color: "#0a7d3c" }}>{s.source}</a>
+      <p style={{ margin: "10px 0 0", fontSize: 12, color: "var(--ink-faint)" }}>
+        出典：<a href={s.source} target="_blank" rel="nofollow noopener noreferrer" style={{ color: "var(--brand)" }}>{s.source}</a>
         （確認日 {s.confirmedAt}）
       </p>
     </div>
@@ -48,7 +48,7 @@ function Card({ s }) {
 function Row({ k, v }) {
   return (
     <div style={{ display: "flex", gap: 12, marginBottom: 4 }}>
-      <dt style={{ flex: "0 0 88px", color: "#8a99a8", fontWeight: 700 }}>{k}</dt>
+      <dt style={{ flex: "0 0 88px", color: "var(--ink-faint)", fontWeight: 700 }}>{k}</dt>
       <dd style={{ margin: 0, flex: 1 }}>{v}</dd>
     </div>
   );
@@ -75,10 +75,10 @@ export default function SubsidyFilter({ subsidies, regionsWithLocal, prefectures
         ))}
       </select>
 
-      <h2 style={{ fontSize: "1.15rem", color: "#1a2b3c", margin: "0 0 12px" }}>国の補助制度</h2>
+      <h2 style={{ fontSize: "1.15rem", color: "var(--ink)", margin: "0 0 12px" }}>国の補助制度</h2>
       {national.map((s) => <Card key={s.id} s={s} />)}
 
-      <h2 style={{ fontSize: "1.15rem", color: "#1a2b3c", margin: "24px 0 12px" }}>{pref}の自治体補助制度</h2>
+      <h2 style={{ fontSize: "1.15rem", color: "var(--ink)", margin: "24px 0 12px" }}>{pref}の自治体補助制度</h2>
       {hasLocal ? (
         local.map((s) => <Card key={s.id} s={s} />)
       ) : (

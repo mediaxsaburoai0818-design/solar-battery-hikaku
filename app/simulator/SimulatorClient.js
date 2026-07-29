@@ -5,7 +5,7 @@ import { useState } from "react";
 // solar: 円/kW と 上限（円）。battery: 円/kWh または flat（円）と 上限（円）。
 const SUBSIDY_PRESETS = {
   "なし / その他": { solarPerKw: 0, solarCap: 0, batteryPerKwh: 0, batteryFlat: 0, batteryCap: 0, note: "" },
-  "東京都（令和8年度）": { solarPerKw: 150000, solarCap: 450000, batteryPerKwh: 100000, batteryFlat: 0, batteryCap: 1200000, note: "太陽光15万円/kW(上限45万)・蓄電池10万円/kWh(上限120万)" },
+  "東京都（令和8年度）": { solarPerKw: 150000, solarCap: 450000, solarPerKwNew: 120000, solarCapNew: 360000, batteryPerKwh: 100000, batteryFlat: 0, batteryCap: 1200000, note: "太陽光: 既存住宅15万円/kW(上限45万)・新築12万円/kW(上限36万)※超過分は逓減の公式ルールを上限で概算・蓄電池10万円/kWh(上限120万/戸)" },
   "神奈川県（令和8年度）": { solarPerKw: 70000, solarCap: 0, batteryPerKwh: 0, batteryFlat: 150000, batteryCap: 0, note: "太陽光7万円/kW・蓄電池15万円/台。太陽光+蓄電池の同時導入が必須" },
   "埼玉県（令和8年度）": { solarPerKw: 70000, solarCap: 350000, batteryPerKwh: 0, batteryFlat: 100000, batteryCap: 0, note: "太陽光7万円/kW(上限35万)・蓄電池10万円/件。太陽光は受付終了・蓄電池は受付中" },
   "千葉県（令和8年度）": { solarPerKw: 70000, solarCap: 0, batteryPerKwh: 0, batteryFlat: 120000, batteryCap: 0, note: "太陽光7万円/kW・蓄電池定額12万円。リース/PPA限定" },
@@ -18,7 +18,7 @@ function Field({ label, children, hint }) {
     <div style={{ marginBottom: 16 }}>
       <label style={{ display: "block", fontSize: 13.5, fontWeight: 700, color: "#37485a", marginBottom: 6 }}>{label}</label>
       {children}
-      {hint ? <p style={{ margin: "4px 0 0", fontSize: 12, color: "#8a99a8" }}>{hint}</p> : null}
+      {hint ? <p style={{ margin: "4px 0 0", fontSize: 12, color: "var(--ink-faint)" }}>{hint}</p> : null}
     </div>
   );
 }
@@ -45,8 +45,10 @@ export default function SimulatorClient() {
 
   // 補助金
   const p = SUBSIDY_PRESETS[pref];
-  let subSolar = p.solarPerKw * solarKw;
-  if (p.solarCap) subSolar = Math.min(subSolar, p.solarCap);
+  const perKw = build === "新築" && p.solarPerKwNew ? p.solarPerKwNew : p.solarPerKw;
+  const solarCapEff = build === "新築" && p.solarCapNew ? p.solarCapNew : p.solarCap;
+  let subSolar = perKw * solarKw;
+  if (solarCapEff) subSolar = Math.min(subSolar, solarCapEff);
   let subBattery = p.batteryFlat ? p.batteryFlat : p.batteryPerKwh * batteryKwh;
   if (p.batteryCap) subBattery = Math.min(subBattery, p.batteryCap);
   const subsidy = subSolar + subBattery;
@@ -85,8 +87,8 @@ export default function SimulatorClient() {
       </div>
 
       {/* 結果 */}
-      <div style={{ border: "1px solid #d9e6dd", borderRadius: 14, overflow: "hidden" }}>
-        <div style={{ background: "#0a7d3c", color: "#fff", padding: "1rem 1.3rem" }}>
+      <div style={{ border: "1px solid var(--line)", borderRadius: 14, overflow: "hidden" }}>
+        <div style={{ background: "var(--brand)", color: "#fff", padding: "1rem 1.3rem" }}>
           <p style={{ margin: 0, fontSize: 13, opacity: 0.9 }}>単純回収年数の目安</p>
           <p style={{ margin: "2px 0 0", fontSize: "1.9rem", fontWeight: 800 }}>
             {payback ? `約 ${payback.toFixed(1)} 年` : "—"}
@@ -116,7 +118,7 @@ function Row({ k, v, sub, strong }) {
         {k}
         {sub ? <div style={{ fontSize: 11.5, color: "#9aa8b5" }}>{sub}</div> : null}
       </div>
-      <div style={{ fontWeight: strong ? 800 : 600, color: strong ? "#0a7d3c" : "#1a2b3c", whiteSpace: "nowrap" }}>{v}</div>
+      <div style={{ fontWeight: strong ? 800 : 600, color: strong ? "var(--brand)" : "var(--ink)", whiteSpace: "nowrap" }}>{v}</div>
     </div>
   );
 }
